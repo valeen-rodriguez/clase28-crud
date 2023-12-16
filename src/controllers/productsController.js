@@ -37,14 +37,15 @@ const controller = {
 	store: (req, res) => {
 		const { name, price, discount, category, description, image } = req.body;
 		const products = getJson();
+		const id = products[products.length -1].id +1;
 		const nuevoProduct = {
-			id: product.id,
+			id: +id,
 			name:name.trim(),
 			price:+price,
 			discount: +discount,
 			category,
 			description:description.trim(),
-			image: image ? image : product.image
+			image: "default-image.png"
 		};
 	
 		products.push(nuevoProduct);
