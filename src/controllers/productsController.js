@@ -35,9 +35,14 @@ const controller = {
 	
 	// Create -  Method to store
 	store: (req, res) => {
-		const { name, price, discount, category, description, image } = req.body;
+		const files = req.files;
+		const id = Date.now();
+		const images = [];
+		files.forEach(element => {
+			images.push(element.filename);
+		});
+		const { name, price, discount, description, category, image } = req.body;
 		const products = getJson();
-		const id = products[products.length -1].id +1;
 		const nuevoProduct = {
 			id: +id,
 			name:name.trim(),
@@ -45,13 +50,11 @@ const controller = {
 			discount: +discount,
 			category,
 			description:description.trim(),
-			image: "default-image.png"
-		};
-	
+			image: files.length > 0 ? images : ['default.jpg']
+		}
 		products.push(nuevoProduct);
-	
 		const json = JSON.stringify(products);
-		fs.writeFileSync(productsFilePath, json, 'utf-8');
+		fs.writeFileSync(productsFilePath,json,'utf-8');
 		res.redirect(`/products/detail/${nuevoProduct.id}`);
 	},
 
@@ -88,15 +91,20 @@ const controller = {
 	},
 
 	// Delete - Delete one product from DB
-	destroy : (req, res) => {
+	destroy: (req, res) => {
 		const { id } = req.params;
 		const products = getJson();
-	  
-		const nuevoArray = products.filter(product => product.id !== +id);
-	  
+		const product = products.find(producto => producto.id == id);
+		const nuevoArray = products.filter(producto => producto.id != id);
 		const json = JSON.stringify(nuevoArray);
-		fs.writeFileSync(productsFilePath, json, 'utf-8');
-	  
+		
+		console.log("imagen:", product.image);
+		fs.unlink(path.join(__dirname, `../../public/images/products/${product.image}`), (err) => {
+			if (err) throw err;
+			console.log(`Borre el archivo ${product.image}`);
+		});
+
+		fs.writeFileSync(productsFilePath, json, "utf-8");
 		return res.redirect('/products');
 	},
 };
