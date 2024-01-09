@@ -1,0 +1,60 @@
+.formulario_section {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.nombre_div{
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+.apellido_div{
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+.email_div{
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+.contraseña_div{
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+.boton_registro_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.feedback {
+    color: red;
+}
+
+#cuadro_texto {
+    width: 100%;
+    padding: 9px;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+
+#boton_enviar {
+    background-color: green;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    width: 250px;
+    margin-top: 10px;
+}
