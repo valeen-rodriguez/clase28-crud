@@ -1,13 +1,25 @@
+/*====== Fonts ======*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+/*====== Class ======*/
 .formulario_section {
+    background-color: white;
     max-width: 400px;
+    border-radius: 8px;
     margin: 50px auto;
     padding: 20px;
-    border-radius: 8px;
 }
 
 label {
     display: block;
     font-size: 12px;
+    font-weight: 500;
+    color: #666666;
     margin-bottom: 5px;
 }
 
@@ -18,16 +30,19 @@ label {
 
 .apellido_div{
     font-size: 11px;
+    margin-top: 20px;
     margin-bottom: 15px;
 }
 
 .email_div{
     font-size: 11px;
+    margin-top: 20px;
     margin-bottom: 15px;
 }
 
 .contraseña_div{
     font-size: 11px;
+    margin-top: 20px;
     margin-bottom: 15px;
 }
 
@@ -35,7 +50,7 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 15px;
+    margin-top: 30px;
 }
 
 .feedback {
@@ -51,10 +66,15 @@ label {
 }
 
 #boton_enviar {
-    background-color: green;
+    width: 120%;
+    background-color: #1259c3;
     color: white;
     padding: 10px 15px;
     border: none;
-    width: 250px;
-    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#boton_enviar:hover {
+    background-color: #1965d7;
 }
